@@ -1,0 +1,217 @@
+Bleve
+Text Indexing for Go
+7 Oct 2014
+
+Marty Schoch
+marty@couchbase.com
+http://github.com/blevesearch/bleve
+@mschoch
+@blevesearch
+
+* Say What?
+.html pronounce.html
+
+* Marty Schoch
+.image couchbase.svg
+- NoSQL Document Database
+- Official Go SDK
+
+Projects Using Go
+
+- N1QL Query Language
+- Secondary Indexing
+- Cross Data-Center Replication
+
+* Why?
+.html why.html
+- Lucene/Solr/Elasticsearch are awesome
+- Could we build 50% of Lucene's text analysis, combine it with off-the-shelf KV stores and get something interesting?
+
+* Bleve Core Ideas
+Text Analysis Pipeline
+
+- We only have to build common core
+- Users customize for domain/language through interfaces
+
+Pluggable KV storage
+
+- No custom file format
+- Plug-in Bolt, LevelDB, ForestDB, etc
+
+Search
+
+- Make term search work
+- Almost everything else built on top of that...
+
+* What is Search?
+
+* Simple Search
+.image simple-search.jpg
+
+* Advanced Search
+.image advanced-search.jpg
+
+* Search Results
+.image search-results.jpg
+
+* Faceted Search
+.image search-facet.jpg
+
+* Getting Started
+
+* Install bleve
+.html goget.html
+
+* Import
+.code -numbers index.go /START OMIT/,/END OMIT/ HLIMPORT
+
+* Data Model
+.code -numbers index.go /START OMIT/,/END OMIT/ HLMODEL
+
+* Index Mapping
+.code -numbers index.go /START OMIT/,/END OMIT/ HLMAPPING
+
+* Create a New Index
+.code -numbers index.go /START OMIT/,/END OMIT/ HLNEW
+
+* Index Data
+.play -numbers index.go /START OMIT/,/END OMIT/ HLINDEX
+
+* Open Index
+.code -numbers search.go /START OMIT/,/END OMIT/ HLOPEN
+
+* Build Query
+.code -numbers search.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Build Request
+.code -numbers search.go /START OMIT/,/END OMIT/ HLREQ
+
+* Search
+.play -numbers -edit search.go /START OMIT/,/END OMIT/ HLSEARCH
+
+* More Realistic Examples
+
+* FOSDEM Schedule of Events (iCal)
+.code ical.html
+
+* FOSDEM Event Data Structure
+.code index_fosdem.go /START OMIT/,/END OMIT/
+
+* Index FOSDEM Events
+.play -numbers -edit index_fosdem.go /START2 OMIT/,/END2 OMIT/
+
+* Search FOSDEM Events
+.play -numbers -edit search_fosdem.go /START OMIT/,/END OMIT/
+
+* Phrase Search
+.play -numbers -edit search_fosdem2.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Combining Queries
+.play -numbers -edit search_fosdem3.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Combining More Queries
+.play -numbers -edit search_fosdem4.go /START OMIT/,/END OMIT/ HLBLEVE
+
+* Fuzzy Query
+.play -numbers -edit search_fosdem4a.go /START OMIT/,/END OMIT/ HLBLEVE
+
+* Numeric Range Query
+.play -numbers -edit search_fosdem5.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Date Range Query
+.play -numbers -edit search_fosdem6.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Query Strings
+.play -numbers -edit search_fosdem7.go /START OMIT/,/END OMIT/ HLQUERY
+
+* Default Mapping vs Custom Mapping
+The default mapping has worked really well, but...
+
+.play -numbers -edit search_problem.go /START OMIT/,/END OMIT/
+  
+
+Earlier today we heard talk named *"Finding*Bad*Needles*in*Worldwide*Haystacks"*.
+
+Will we find it if we search for *"haystack"*?
+
+* Custom Mapping
+.play -numbers -edit index_custom.go /START OMIT/,/END OMIT/
+
+* Search Custom Mapping
+.play -numbers -edit search_custom.go /START OMIT/,/END OMIT/
+
+* Analysis Wizard
+http://analysis.blevesearch.com
+
+.image wizard.png 339 728
+ 
+
+* Precision vs Recall
+.image precision-vs-recall.png 425 280
+- Precision - are the returned results relevant?
+- Recall - are the relevant results returned?
+
+* Faceted Search
+.play -numbers -edit search_facet.go /START OMIT/,/END OMIT/
+
+* Optional HTTP Handlers
+.code http.go /START OMIT/,/END OMIT/
+- All major bleve operations mapped
+- Assume JSON document bodies
+- See bleve-explorer sample app
+ https://github.com/blevesearch/bleve-explorer
+.image bleve-explorer.png 217 728
+
+* Putting it All Together
+
+* FOSDEM Schedule Search
+http://fosdem.blevesearch.com
+
+.image fosdem-search.png 353 728
+
+* Performance
+
+* Micro Benchmarks
+Use Go benchmarks to test/compare small units of functionality in isolation.
+
+.code micro.txt
+
+* Bleve Bench
+Long(er) running test, index real text from Wikipedia.  Measure stats periodicaly, compare across time.
+
+- Does indexing performance degrade over time?
+- How does search performance relate to number of matching documents?
+
+.image leveldb-100kdocs.png
+
+* Join the Community
+
+* Community 
+.image irc.png
+
+- #bleve is small/quiet room, talk to us real time
+
+.image google-groups.png
+
+- Discuss your use-case
+- Plan a feature implementation
+
+.image github.png 82 200
+
+- Apache License v2.0
+- Report Issues, Submit Pull Requests
+
+* Contributors
+.image contributors.png 550 625
+
+* Roadmap
+- Result Sorting (other than score)
+- Better Spell Suggest/Fuzzy Search
+- Performance
+- Prepare for 1.0 Release
+.html road.html
+
+* Speaking
+- GopherCon India February 2015 (Speaking)
+- GopherCon July (Attending/Proposal Submitted)
+- Your Conference Meetup Here!
