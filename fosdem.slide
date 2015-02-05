@@ -1,6 +1,6 @@
 Bleve
 Text Indexing for Go
-7 Oct 2014
+1 Feb 2015
 
 Marty Schoch
 marty@couchbase.com
@@ -147,7 +147,7 @@ http://analysis.blevesearch.com
  
 
 * Precision vs Recall
-.image precision-vs-recall.png 425 280
+.image precision-vs-recall.png 400 264
 - Precision - are the returned results relevant?
 - Recall - are the relevant results returned?
 
@@ -198,8 +198,7 @@ Long(er) running test, index real text from Wikipedia.  Measure stats periodical
 
 .image github.png 82 200
 
-- Apache License v2.0
-- Report Issues, Submit Pull Requests
+- Apache License v2.0, Report Issues, Submit Pull Requests
 
 * Contributors
 .image contributors.png 550 625
@@ -213,5 +212,5 @@ Long(er) running test, index real text from Wikipedia.  Measure stats periodical
 
 * Speaking
 - GopherCon India February 2015 (Speaking)
-- GopherCon July (Attending/Proposal Submitted)
-- Your Conference Meetup Here!
+- GopherCon July (Attending/Proposal to be Submitted)
+- Your Conference/Meetup Here!
